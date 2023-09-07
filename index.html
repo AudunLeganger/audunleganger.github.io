@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Monty Hall</title>
+    <link rel="stylesheet" href="styles.css" />
+    <script src="./script.js" defer></script>
+  </head>
+  <body>
+    <h1 class="heading">Monty Hall Problemet</h1>
+    <div class="door-wrapper">
+      <div class="door-container">
+        <div class="prize-container">
+          <div class="door door-closed"></div>
+        </div>
+      </div>
+      <div class="door-container">
+        <div class="prize-container">
+          <div class="door door-closed"></div>
+        </div>
+      </div>
+      <div class="door-container">
+        <div class="prize-container">
+          <div class="door door-closed"></div>
+        </div>
+      </div>
+    </div>
+    <div class="switch-choice-wrapper hidden">
+      <p>Vil du bytte dør?</p>
+      <div class="switch-button-wrapper">
+        <button class="switch-button switch">Bytt dør</button>
+        <button class="switch-button stay">Ikke bytt dør</button>
+      </div>
+    </div>
+    <h3 class="result"></h3>
+    <button class="restart-btn hidden">Restart</button>
+    <div class="results-wrapper">
+      <h2>Resultater</h2>
+      <h4 class="keep-wins">
+        Antall vinn (uten bytte): <span class="keep-win-count"></span>0
+      </h4>
+      <h4 class="switch-wins">
+        Antall tap (uten bytte): <span class="keep-loss-count"></span>0
+      </h4>
+      <h4>Antall vinn (med bytte): <span class="switch-win-count"></span>0</h4>
+      <h4>Antall tap (med bytte): <span class="switch-loss-count"></span>0</h4>
+    </div>
+  </body>
+</html>
