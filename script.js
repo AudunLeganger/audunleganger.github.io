@@ -79,6 +79,7 @@ const resetGame = () => {
   doorClicked = false;
   clickedDoor = null;
   selectedDoor = null;
+  hasSwitchedDoor = false;
   hideRestartButton();
   hideResult();
   initializeGame();
@@ -105,6 +106,7 @@ const handleSwitchChoice = () => {
       switchDoors(selectedDoor, door);
     }
   }
+  hasSwitchedDoor = true;
   openAllDoors();
   displayResult(selectedDoor);
 };
@@ -173,9 +175,11 @@ const displayResult = (door) => {
   if (door.prize) {
     resultString = "Gratulerer! Du vant bilen! 🚗";
     resultElement.classList.add("win");
+    handleWin(hasSwitchedDoor);
   } else {
     resultString = "Du tapte! 😢";
     resultElement.classList.add("lose");
+    handleLoss(hasSwitchedDoor);
   }
   resultElement.innerHTML = resultString;
   hideChoiceButtons();
@@ -215,6 +219,54 @@ const initializeGame = () => {
   determineCar(doorCount);
 };
 
+const incrementKeepWinCount = () => {
+  const keepWincount = document.querySelector(".keep-win-count");
+  console.log(parseInt(keepWincount.innerHTML));
+  keepWincount.innerHTML = parseInt(keepWincount.innerHTML) + 1;
+};
+
+const incrementSwitchWinCount = () => {
+  const switchWincount = document.querySelector(".switch-win-count");
+  switchWincount.innerHTML = parseInt(switchWincount.innerHTML) + 1;
+};
+
+const incrementKeepLossCount = () => {
+  const keepLossCount = document.querySelector(".keep-loss-count");
+  keepLossCount.innerHTML = parseInt(keepLossCount.innerHTML) + 1;
+};
+
+const incrementSwitchLossCount = () => {
+  const switchLossCount = document.querySelector(".switch-loss-count");
+  switchLossCount.innerHTML = parseInt(switchLossCount.innerHTML) + 1;
+};
+
+const resetWinLossCount = () => {
+  const keepWincount = document.querySelector(".keep-win-count");
+  const switchWincount = document.querySelector(".switch-win-count");
+  const keepLossCount = document.querySelector(".keep-loss-count");
+  const switchLossCount = document.querySelector(".switch-loss-count");
+  keepWincount.innerHTML = 0;
+  switchWincount.innerHTML = 0;
+  keepLossCount.innerHTML = 0;
+  switchLossCount.innerHTML = 0;
+};
+
+const handleWin = (switchedDoor) => {
+  if (switchedDoor) {
+    incrementSwitchWinCount();
+  } else {
+    incrementKeepWinCount();
+  }
+};
+
+const handleLoss = (switchedDoor) => {
+  if (switchedDoor) {
+    incrementSwitchLossCount();
+  } else {
+    incrementKeepLossCount();
+  }
+};
+
 const doorElements = document.querySelectorAll(".door");
 
 const doors = [
@@ -245,6 +297,7 @@ const doorCount = 3;
 let doorClicked = false;
 let clickedDoor = null;
 let selectedDoor = null;
+let hasSwitchedDoor = false;
 
 initializeGame();
 setDoorClickHandlers(doors);
