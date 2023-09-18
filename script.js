@@ -267,6 +267,13 @@ const handleLoss = (switchedDoor) => {
   }
 };
 
+const setResetScoreButtonHandler = () => {
+  const resetScoreButton = document.querySelector(".reset-score-btn");
+  resetScoreButton.addEventListener("click", () => {
+    resetWinLossCount();
+  });
+};
+
 const doorElements = document.querySelectorAll(".door");
 
 const doors = [
@@ -303,3 +310,4 @@ initializeGame();
 setDoorClickHandlers(doors);
 setChoiceButtonHandlers();
 setRestartButtonHandler();
+setResetScoreButtonHandler();

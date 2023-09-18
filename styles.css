@@ -1,7 +1,20 @@
+* {
+  font-family: "Gill Sans", "Gill Sans MT", Calibri, "Trebuchet MS", sans-serif;
+}
+
+h1 {
+  text-align: center;
+}
+
+html {
+  background-color: #ced9df;
+}
+
 .door-wrapper {
   display: flex;
   justify-content: space-around;
   align-items: center;
+  padding: 0px;
 }
 .door {
   position: relative;
@@ -139,11 +152,15 @@ button {
   margin: 0;
 }
 
-.result.win {
+.result.win,
+.keep-wins,
+.switch-wins {
   color: green;
 }
 
-.result.lose {
+.result.lose,
+.keep-losses,
+.switch-losses {
   color: red;
 }
 
@@ -157,4 +174,35 @@ button {
   border: 1px solid black;
   background-color: white;
   cursor: pointer;
+}
+
+h1,
+h2,
+h3,
+h4 {
+  margin: 0;
+}
+
+.results-text {
+  margin-top: 1rem;
+  text-align: center;
+}
+
+.results-wrapper {
+  display: flex;
+  flex-direction: row;
+  margin: 0 15em;
+}
+
+.keep-wrapper,
+.switch-wrapper {
+  flex: 1;
+  text-align: center;
+}
+
+.reset-score-btn {
+  display: block;
+  margin: 0 auto;
+  padding: 0.5em;
+  border-radius: 1em;
 }
